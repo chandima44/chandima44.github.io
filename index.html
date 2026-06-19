@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chandima Abeynayake — Mechanical Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f1117;
+    --ink-muted: #5a5f6e;
+    --ink-faint: #9ba0ad;
+    --surface: #ffffff;
+    --surface-raised: #f7f8fa;
+    --surface-card: #ffffff;
+    --accent: #1a56db;
+    --accent-light: #e8f0fe;
+    --accent-dark: #1240aa;
+    --teal: #0d9488;
+    --teal-light: #e0f7f4;
+    --border: #e4e7ed;
+    --border-strong: #c8cdd8;
+    --radius: 10px;
+    --radius-lg: 16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* SECTIONS */
+  section { padding: 6rem 2rem; max-width: 880px; margin: 0 auto; }
+
+  /* HERO */
+  #hero {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
+    color: var(--ink-muted);
+    max-width: 500px;
+    margin-bottom: 2rem;
+    line-height: 1.65;
+  }
+
+  .hero-cta-group { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    padding: 10px 22px;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border-strong);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.15s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+  /* Avatar blob */
+  .hero-avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+    background: linear-gradient(135deg, var(--accent-light) 0%, #c7d9ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+    flex-shrink: 0;
+  }
+
+  /* ABOUT */
+  #about { border-top: 1px solid var(--border); }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+    color: var(--ink);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-text p { color: var(--ink-muted); margin-bottom: 1rem; line-height: 1.75; }
+
+  .about-facts { display: flex; flex-direction: column; gap: 1rem; }
+
+  .fact-card {
+    background: var(--surface-raised);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+  }
+  .fact-card .label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; }
+  .fact-card .value { font-weight: 600; font-size: 15px; color: var(--ink); }
+
+  /* EXPERIENCE */
+  #experience { border-top: 1px solid var(--border); }
+
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .timeline-item:last-child { border-bottom: none; }
+
+  .tl-meta { padding-top: 3px; }
+  .tl-date { font-size: 12px; font-weight: 600; color: var(--ink-faint); white-space: nowrap; }
+  .tl-company { font-size: 12px; color: var(--teal); font-weight: 600; margin-top: 4px; }
+
+  .tl-role { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--ink); }
+
+  .tl-bullets { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .tl-bullets li {
+    font-size: 14px;
+    color: var(--ink-muted);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .tl-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* PROJECTS */
+  #projects { border-top: 1px solid var(--border); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .project-card {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .project-tag {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 0.9rem;
+  }
+
+  .project-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .project-desc { font-size: 13.5px; color: var(--ink-muted); line-height: 1.65; }
+
+  .project-result {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--teal);
+  }
+
+  /* SKILLS */
+  #skills { border-top: 1px solid var(--border); }
+
+  .skills-grid { display: flex; flex-direction: column; gap: 2rem; }
+
+  .skill-group-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .skill-tag {
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .skill-tag.software {
+    background: var(--teal-light);
+    border-color: #a7f3eb;
+    color: #0d6b61;
+  }
+
+  .skill-tag.lang {
+    background: var(--accent-light);
+    border-color: #b3c9f8;
+    color: var(--accent-dark);
+  }
+
+  /* EDUCATION */
+  #education { border-top: 1px solid var(--border); }
+
+  .edu-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .edu-card {
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .edu-school { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
+  .edu-degree { font-size: 14px; color: var(--ink-muted); }
+  .edu-gpa {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-align: right;
+    line-height: 1;
+  }
+  .edu-gpa span { display: block; font-size: 11px; font-weight: 500; color: var(--ink-faint); margin-top: 3px; }
+
+  /* CONTACT */
+  #contact { border-top: 1px solid var(--border); }
+
+  .contact-inner {
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    color: #fff;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .contact-inner h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  .contact-inner p { color: rgba(255,255,255,0.6); font-size: 15px; }
+
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    background: rgba(255,255,255,0.1);
+    padding: 10px 18px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.2); }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--border);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 680px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-avatar { width: 120px; height: 120px; font-size: 2rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .contact-inner { grid-template-columns: 1fr; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    section { padding: 4rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-name">Chandima A.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div>
+    <p class="hero-eyebrow">Mechanical Engineer</p>
+    <h1 class="hero-name">Chandima<br>Abeynayake</h1>
+    <p class="hero-tagline">Graduate researcher at Clemson University specializing in autonomous vehicle design, automation engineering, and machine-learning-driven tradespace analysis.</p>
+    <div class="hero-cta-group">
+      <a href="#projects" class="btn-primary">View Projects ↓</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-avatar">CA</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">Background</p>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a Mechanical Engineer with over two years of industry experience across R&D, automation, and advanced manufacturing at MAS Holdings in Sri Lanka. Currently pursuing my MS at Clemson University, where my research sits at the intersection of autonomous systems, ML, and design optimization.</p>
+      <p>My background spans the full product lifecycle — from CAD modeling and FEA simulation to PLC programming and CNC manufacturing. I enjoy finding data-driven solutions to complex engineering problems.</p>
+      <p>When I'm not debugging code or modeling parts, I explore content creation and love experimenting in the kitchen.</p>
+    </div>
+    <div class="about-facts">
+      <div class="fact-card">
+        <div class="label">Current Role</div>
+        <div class="value">Graduate Research Assistant — Clemson University</div>
+      </div>
+      <div class="fact-card">
+        <div class="label">GPA</div>
+        <div class="value">3.86 / 4.00</div>
+      </div>
+      <div class="fact-card">
+        <div class="label">Location</div>
+        <div class="value">Clemson, South Carolina, USA</div>
+      </div>
+      <div class="fact-card">
+        <div class="label">Expected Graduation</div>
+        <div class="value">December 2026</div>
+      </div>
+      <div class="fact-card">
+        <div class="label">Certifications</div>
+        <div class="value">SOLIDWORKS CSWA · IEng (IESL)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Career</p>
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="tl-meta">
+        <div class="tl-date">Jan 2025 – Present</div>
+        <div class="tl-company">Clemson University</div>
+      </div>
+      <div>
+        <div class="tl-role">Graduate Research Assistant</div>
+        <ul class="tl-bullets">
+          <li>Developed tradespace exploration frameworks for collaborative autonomous vehicles, mapping 100+ design parameters to guide system-level trade-off analyses.</li>
+          <li>Integrated ML models into multi-vehicle design pipelines to accelerate convergence on Pareto-optimal configurations.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-meta">
+        <div class="tl-date">Aug 2023 – Dec 2024</div>
+        <div class="tl-company">MAS Holdings</div>
+      </div>
+      <div>
+        <div class="tl-role">R&D Engineer</div>
+        <ul class="tl-bullets">
+          <li>Led full design lifecycle for molds across 13 product development projects — all delivered on schedule.</li>
+          <li>Executed fabric optimization R&D initiative, achieving an estimated 32% reduction in material waste and measurable production cost savings.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-meta">
+        <div class="tl-date">Feb 2023 – Jul 2023</div>
+        <div class="tl-company">MAS Holdings</div>
+      </div>
+      <div>
+        <div class="tl-role">Automation Intern</div>
+        <ul class="tl-bullets">
+          <li>Designed and fabricated automated machinery for the garment industry, improving 4 manufacturing processes.</li>
+          <li>Documented SOPs for sustained operation of new automated systems.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-meta">
+        <div class="tl-date">May 2021 – Dec 2021</div>
+        <div class="tl-company">APSSDC</div>
+      </div>
+      <div>
+        <div class="tl-role">Trainee — PLC, CAD & CNC Manufacturing</div>
+        <ul class="tl-bullets">
+          <li>Programmed a five-substation industrial automation process for a drug sorting machine using Siemens S7-1200 PLC, HMI, and pneumatic components.</li>
+          <li>Completed specialized training in CATIA (3D modeling, part assembly, 2D drawings) and CNC manufacturing (G-code programming).</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Work</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-tag">Autonomous Systems · ML</div>
+      <div class="project-title">Tradespace Exploration for Collaborative Autonomous Vehicles</div>
+      <div class="project-desc">Designed a framework to map 100+ design parameters and applied ML models to accelerate convergence on Pareto-optimal multi-vehicle configurations.</div>
+      <div class="project-result">📍 Clemson University — Ongoing MS Research</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">R&D · Manufacturing</div>
+      <div class="project-title">Fabric Optimization Initiative</div>
+      <div class="project-desc">Led data-driven R&D to reduce material waste in garment manufacturing at MAS Holdings through mold redesign and process optimization.</div>
+      <div class="project-result">✦ ~32% reduction in material waste</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Controls · Simulation</div>
+      <div class="project-title">Two-Link Pendulum Control System</div>
+      <div class="project-desc">Developed nonlinear dynamic models and designed an LQR controller with an energy-based swing-up strategy (Åström–Furuta method) in MATLAB.</div>
+      <div class="project-result">✦ ME 8200 — Clemson University, Spring 2026</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">PLC · Automation</div>
+      <div class="project-title">Drug Sorting Machine Automation</div>
+      <div class="project-desc">Programmed a five-substation industrial automation process using Siemens S7-1200 PLC, integrating mechanical, electrical, and pneumatic subsystems.</div>
+      <div class="project-result">✦ Full end-to-end system delivered</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Design · Fabrication</div>
+      <div class="project-title">UVC Sterilization Box</div>
+      <div class="project-desc">Designed and fabricated a UVC sterilization enclosure as a final year project, covering concept design, CAD modeling, and physical prototyping.</div>
+      <div class="project-result">✦ Final Year Project — JNTUA, 2022</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">Capabilities</p>
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+
+    <div>
+      <div class="skill-group-title">Technical Engineering</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Engineering Design</span>
+        <span class="skill-tag">FEA / ANSYS</span>
+        <span class="skill-tag">DFM&A</span>
+        <span class="skill-tag">GD&T</span>
+        <span class="skill-tag">DFMEA</span>
+        <span class="skill-tag">DFSS</span>
+        <span class="skill-tag">CNC Manufacturing</span>
+        <span class="skill-tag">Mechatronics</span>
+        <span class="skill-tag">PLC Programming</span>
+        <span class="skill-tag">Control Box Design</span>
+        <span class="skill-tag">Arduino</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="skill-group-title">Software & CAD</div>
+      <div class="skill-tags">
+        <span class="skill-tag software">SOLIDWORKS</span>
+        <span class="skill-tag software">Siemens NX</span>
+        <span class="skill-tag software">CATIA</span>
+        <span class="skill-tag software">AutoCAD</span>
+        <span class="skill-tag software">CREO / PROE</span>
+        <span class="skill-tag software">ANSYS</span>
+        <span class="skill-tag software">TIA Portal</span>
+        <span class="skill-tag software">Adobe Illustrator</span>
+        <span class="skill-tag software">Autodesk Eagle</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="skill-group-title">Programming</div>
+      <div class="skill-tags">
+        <span class="skill-tag lang">Python</span>
+        <span class="skill-tag lang">MATLAB</span>
+        <span class="skill-tag lang">C</span>
+        <span class="skill-tag lang">Arduino Programming</span>
+        <span class="skill-tag lang">PLC (Siemens S7-1200)</span>
+        <span class="skill-tag lang">LaTeX</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="skill-group-title">Manufacturing Equipment</div>
+      <div class="skill-tags">
+        <span class="skill-tag">CNC Machine</span>
+        <span class="skill-tag">Laser Cutting</span>
+        <span class="skill-tag">Lathe</span>
+        <span class="skill-tag">Milling Machine</span>
+        <span class="skill-tag">3D Printer</span>
+        <span class="skill-tag">Arc & Spot Welding</span>
+        <span class="skill-tag">Laser Engraving</span>
+        <span class="skill-tag">Powder Coat Machine</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">Academic Background</p>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-grid">
+
+    <div class="edu-card">
+      <div>
+        <div class="edu-school">Clemson University</div>
+        <div class="edu-degree">MS in Mechanical Engineering · Jan 2025 – Dec 2026 (Expected)<br>Clemson, South Carolina, USA</div>
+      </div>
+      <div>
+        <div class="edu-gpa">3.86<span>/ 4.00</span></div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div>
+        <div class="edu-school">Jawaharlal Nehru Technological University Anantapur</div>
+        <div class="edu-degree">B.Tech in Mechanical Engineering (First Class with Distinction) · 2018 – 2022<br>Anantapur, India</div>
+      </div>
+      <div>
+        <div class="edu-gpa">7.87<span>/ 10.00</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Let's connect</p>
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-inner">
+    <div>
+      <h2>Open to opportunities</h2>
+      <p>I'm actively looking for roles in mechanical design, automation, and autonomous systems. Let's talk.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:chandimaudayanga@gmail.com" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        chandimaudayanga@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/chandima-abeynayake-84583a37b" target="_blank" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn Profile
+      </a>
+      <a href="tel:8649869584" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (864) 986-9584
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Chandima Udayanga Abeynayake · Built with HTML & CSS · Hosted on GitHub Pages
+</footer>
+
+</body>
+</html>
